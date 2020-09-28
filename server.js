@@ -1,15 +1,16 @@
 var express = require('express');
 var app = express();
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.sendFile('index.html');
+app.get('/:id', (req, res) => {
+    if (req.params.id == 'about') {
+       res.sendFile(__dirname + '/about.html');
+    }
+    res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/about', (req, res) => {
-    res.sendFile('about.html');
-});
+
 
 app.listen(8080);
 
